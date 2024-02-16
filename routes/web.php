@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\TallerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/curso/{num1}/{num2}',[CursoController::class,'hola'])->name('curso.show');
+Route::get('/primo/{num1}',[TallerController::class,'esPrimo'])->name('primo.show');
+Route::get('/amigo/{numero1}/{numero2}',[TallerController::class,'numAmigos'])->name('amigos.show');
 
