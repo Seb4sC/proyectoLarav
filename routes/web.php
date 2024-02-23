@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\TallerController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "principal";
 });
 
-Route::get('/curso/{num1}/{num2}',[CursoController::class,'hola'])->name('curso.show');
-Route::get('/primo/{num1}',[TallerController::class,'esPrimo'])->name('primo.show');
-Route::get('/amigo/{numero1}/{numero2}',[TallerController::class,'numAmigos'])->name('amigos.show');
+Route::get('/formulario',[TallerController::class,'createUno']);
+Route::post('/formulario',[TallerController::class,'storeUno'])->name('formulario.store');
+Route::get('/formulario2',[TallerController::class,'createDos']);
+Route::post('/formulario2',[TallerController::class,'storeDos'])->name('formularioAmigo.store');
+Route::get('/formulario3',[TallerController::class,'createTres']);
+Route::post('/formulario3',[TallerController::class,'storeTres'])->name('formularioPromedio.store');
+Route::get('/formulario4',[TallerController::class,'createCuatro']);
+Route::post('/formulario4',[TallerController::class,'storeCuatro'])->name('formularioCuadratica.store');
+
+
+Route::get('/todos', [TallerController::class, 'createTodos']);
+Route::post('/todos', [TallerController::class, 'storeTodos'])->name('todos.store');
+
+//Route::get('/curso/{num1}/{num2}',[CursoController::class,'hola'])->name('curso.show');
+//Route::get('/primo/{num1}',[TallerController::class,'esPrimo'])->name('primo.show');
+//Route::get('/amigo/{numero1}/{numero2}',[TallerController::class,'numAmigos'])->name('amigos.show');
 

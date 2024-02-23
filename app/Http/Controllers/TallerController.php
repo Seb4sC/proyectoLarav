@@ -6,7 +6,21 @@ use Illuminate\Http\Request;
 
 class TallerController extends Controller
 {
-    public function esPrimo($numero){
+    public function createUno(){
+        return view('formulario');
+    }
+    public function createDos(){
+        return view('formularioAmigo');
+    }
+    public function createTres(){
+        return view('formularioPromedio');
+    }
+    public function createCuatro(){
+        return view('formularioCuadratica');
+    }
+
+    public function storeUno(Request $request){
+        $numero = $request->numPrimo;
         $divisores = 0;
         for ($i=1; $i <= $numero; $i++) {
             if($numero%$i == 0){
@@ -20,7 +34,9 @@ class TallerController extends Controller
         }
     }
 
-    public function numAmigos($numero1, $numero2){
+    public function storeDos(Request $request){
+        $numero1 = $request->numAmigo1;
+        $numero2 = $request->numAmigo2;
         $divNum1 = 0;
         $divNum2 = 0;
 
@@ -37,9 +53,107 @@ class TallerController extends Controller
         }
 
         if ($divNum1 === $divNum2) {
-            return "Es amigo";
+            return "Son amigos";
         } else {
-            return "No es amigo";
+            return "No son amigos";
         }
+    }
+    public function storeTres(Request $request){
+        $num1 = $request->numPromedio1;
+        $num2 = $request->numPromedio2;
+        $num3 = $request->numPromedio3;
+
+        $promedio = round((($num1 + $num2 + $num3)/3), 2);
+
+        return $promedio;
+    }
+    public function storeCuatro(Request $request){
+        $a = $request->a;
+        $b = $request->b;
+        $c = $request->c;
+        $aux = (pow($b, 2) - (4*$a*$c));
+        if ($a == 0 || $aux < 0){
+            return "No se puede calcular. Ingresaste algún dato no válido";
+        } else {
+            $x1 = round(((($b*-1) + sqrt($aux)) / 2 * $a),2);
+            $x2 = round((($b*-1) - sqrt($aux) / 2 * $a),2);
+            return [$x1, $x2];
+        }
+    }
+
+
+
+
+
+
+
+
+    public function createTodos(){
+        return view('todos');
+    }
+
+    public function storeTodos(Request $request){
+        $todos = array();
+
+        $numero = $request->numPrimo;
+        $divisores = 0;
+        for ($i=1; $i <= $numero; $i++) {
+            if($numero%$i == 0){
+                $divisores++;
+            }
+        }
+        if ($divisores > 2) {
+            array_push($todos, "No es primo");
+        } else {
+            array_push($todos, "Es primo");
+        }
+
+        $numero1 = $request->numAmigo1;
+        $numero2 = $request->numAmigo2;
+        $divNum1 = 0;
+        $divNum2 = 0;
+
+        for ($i=1; $i <= $numero1; $i++) {
+            if($numero1%$i == 0){
+                $divNum1 += $i;
+            }
+        }
+
+        for ($i=1; $i <= $numero2; $i++) {
+            if($numero2%$i == 0){
+                $divNum2 += $i;
+            }
+        }
+
+        if ($divNum1 === $divNum2) {
+            array_push($todos, "Son amigos");
+        } else {
+            array_push($todos, "No son amigos");
+        }
+
+
+        $num1 = $request->numPromedio1;
+        $num2 = $request->numPromedio2;
+        $num3 = $request->numPromedio3;
+
+        $promedio = round((($num1 + $num2 + $num3)/3), 2);
+
+        array_push($todos, $promedio);
+
+
+
+        $a = $request->a;
+        $b = $request->b;
+        $c = $request->c;
+        $aux = (pow($b, 2) - (4*$a*$c));
+        if ($a == 0 || $aux < 0){
+            array_push($todos, "No se puede calcular. Ingresaste algún dato no válido");
+        } else {
+            $x1 = round(((($b*-1) + sqrt($aux)) / 2 * $a),2);
+            $x2 = round((($b*-1) - sqrt($aux) / 2 * $a),2);
+            array_push($todos, [$x1, $x2]);
+        }
+
+        return $todos;
     }
 }

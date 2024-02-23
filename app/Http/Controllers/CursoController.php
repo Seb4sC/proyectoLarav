@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
-    public function hola($num1, $num2){
-        return $num1+$num2;
+    public function create(){
+        return view('formulario');
+    }
+    // 4 rutas create y 4 store
+    public function store(Request $request){
+        return $request->num1;
     }
 }
