@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\PrimoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TallerController;
@@ -22,8 +23,8 @@ Route::get('/', function () {
     return "principal";
 });
 
-// Route::get('/formulario',[TallerController::class,'createUno']);
-// Route::post('/formulario',[TallerController::class,'storeUno'])->name('formulario.store');
+// Route::get('/formularioPrimo',[TallerController::class,'createUno']);
+// Route::post('/formularioPrimo',[TallerController::class,'storeUno'])->name('formularioPrimo.store');
 // Route::get('/formulario2',[TallerController::class,'createDos']);
 // Route::post('/formulario2',[TallerController::class,'storeDos'])->name('formularioAmigo.store');
 // Route::get('/formulario3',[TallerController::class,'createTres']);
@@ -41,6 +42,9 @@ Route::post('/frmProduct', [ProductController::class, 'storeProducto'])->name('p
 
 Route::get('/frmService', [ServiceController::class, 'formularioServicio']);
 Route::post('/frmService', [ServiceController::class, 'storeServicio'])->name('service.store');
+
+Route::get('/frmPrimo', [PrimoController::class, 'formularioPrimo']);
+Route::post('/frmPrimo', [PrimoController::class, 'storePrimo'])->name('primo.store');
 //Route::get('/curso/{num1}/{num2}',[CursoController::class,'hola'])->name('curso.show');
 //Route::get('/primo/{num1}',[TallerController::class,'esPrimo'])->name('primo.show');
 //Route::get('/amigo/{numero1}/{numero2}',[TallerController::class,'numAmigos'])->name('amigos.show');

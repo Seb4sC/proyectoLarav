@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class TallerController extends Controller
 {
     public function createUno(){
-        return view('formulario');
+        return view('formularioPrimo');
     }
     public function createDos(){
         return view('formularioAmigo');
