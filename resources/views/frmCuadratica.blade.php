@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>Primo</title>
+    <title>Cuadratica</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -18,23 +18,35 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('cuadratica.show')}}">Cuadratica</a>
+                <a class="nav-link active" aria-current="page" href="{{route('primo.show')}}">Primo</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-    <form action="{{route('primo.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('cuadratica.store')}}" method="POST" enctype="multipart/form-data">
 
         @csrf
-        <h2>Número Primo</h2>
-        <label>
-        Ingrese el número para saber si es o no primo:
-        <br>
-        <input type="number" name="numEval">
-        </label>
-        <br><br>
+        <h2>Cuadrática</h2>
+            <label>
+                Ingrese el valor de a:
+                <br>
+                <input type="number" name="a">
+                </label>
+                <br>
+                <label>
+                Ingrese el valor de b:
+                <br>
+                <input type="number" name="b">
+                </label>
+                <br>
+                <label>
+                Ingrese el valor de c:
+                <br>
+                <input type="number" name="c">
+                </label>
+                <br><br>
 
         <button type="submit">Enviar Formulario:</button>
     </form>

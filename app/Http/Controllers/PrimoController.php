@@ -32,4 +32,9 @@ class PrimoController extends Controller
             return "Es primo";
         }
     }
+
+    public function listar(){
+        $primos = Primo::orderby('id')->get();
+        return view('resultadoPrimo', compact('primos'));
+    }
 }

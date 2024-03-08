@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CuadraticaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\PrimoController;
 use App\Http\Controllers\ProductController;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "principal";
+    return view('home');
 });
 
 // Route::get('/formularioPrimo',[TallerController::class,'createUno']);
@@ -43,8 +44,14 @@ Route::post('/frmProduct', [ProductController::class, 'storeProducto'])->name('p
 Route::get('/frmService', [ServiceController::class, 'formularioServicio']);
 Route::post('/frmService', [ServiceController::class, 'storeServicio'])->name('service.store');
 
-Route::get('/frmPrimo', [PrimoController::class, 'formularioPrimo']);
+Route::get('/frmPrimo', [PrimoController::class, 'formularioPrimo'])->name('primo.show');
 Route::post('/frmPrimo', [PrimoController::class, 'storePrimo'])->name('primo.store');
+Route::get('/listaPrimos', [PrimoController::class, 'listar'])->name('listaPrimos.show');
+
+
+Route::get('/frmCuadratica', [CuadraticaController::class, 'formularioCuadratica'])->name('cuadratica.show');
+Route::post('/frmCuadratica', [CuadraticaController::class, 'storeCuadratica'])->name('cuadratica.store');
+Route::get('/listaCuadraticas', [CuadraticaController::class, 'listar']);
 //Route::get('/curso/{num1}/{num2}',[CursoController::class,'hola'])->name('curso.show');
 //Route::get('/primo/{num1}',[TallerController::class,'esPrimo'])->name('primo.show');
 //Route::get('/amigo/{numero1}/{numero2}',[TallerController::class,'numAmigos'])->name('amigos.show');
