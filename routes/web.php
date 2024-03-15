@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\CompaniasController;
 use App\Http\Controllers\CuadraticaController;
+use App\Http\Controllers\CuartelController;
+use App\Http\Controllers\CuerpoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\PrimoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\SoldadoController;
 use App\Http\Controllers\TallerController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +57,21 @@ Route::get('/listaPrimos', [PrimoController::class, 'listar'])->name('listaPrimo
 Route::get('/frmCuadratica', [CuadraticaController::class, 'formularioCuadratica'])->name('cuadratica.show');
 Route::post('/frmCuadratica', [CuadraticaController::class, 'storeCuadratica'])->name('cuadratica.store');
 Route::get('/listaCuadraticas', [CuadraticaController::class, 'listar']);
-//Route::get('/curso/{num1}/{num2}',[CursoController::class,'hola'])->name('curso.show');
-//Route::get('/primo/{num1}',[TallerController::class,'esPrimo'])->name('primo.show');
-//Route::get('/amigo/{numero1}/{numero2}',[TallerController::class,'numAmigos'])->name('amigos.show');
 
+
+
+// Rutas get y post de examen 15/03/2024
+Route::get('/soldado', [SoldadoController::class, 'show'])->name('soldado.show');
+Route::post('/soldado', [SoldadoController::class, 'insertarDatos'])->name('soldado.store');
+
+Route::get('/cuartel', [CuartelController::class, 'show'])->name('cuartel.show');
+Route::post('/cuartel', [CuartelController::class, 'insertarDatos'])->name('cuartel.store');
+
+Route::get('/cuerpoEjercito', [CuerpoController::class, 'show'])->name('cuerpo.show');
+Route::post('/cuerpoEjercito', [CuerpoController::class, 'insertarDatos'])->name('cuerpo.store');
+
+Route::get('/compania', [CompaniasController::class, 'show'])->name('compania.show');
+Route::post('/compania', [CompaniasController::class, 'insertarDatos'])->name('compania.store');
+
+Route::get('/servicio', [ServicioController::class, 'show'])->name('servicio.show');
+Route::post('/servicio', [ServicioController::class, 'insertarDatos'])->name('servicio.store');
